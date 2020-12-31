@@ -34,7 +34,8 @@ function joinRoom(name, room_id) {
 }
 
 function roomOpen() {
-  login.className = 'hidden'
+  hide(login)
+
   reveal(startAudioButton)
   hide(stopAudioButton)
   reveal(startVideoButton)
@@ -42,16 +43,16 @@ function roomOpen() {
   reveal(startScreenButton)
   hide(stopScreenButton)
   reveal(exitButton)
-  control.className = ''
+  reveal(control)
   reveal(videoMedia)
 }
 
 function hide(elem) {
-  elem.className = 'hidden'
+  elem.classList.add('hidden')
 }
 
 function reveal(elem) {
-  elem.className = ''
+  elem.classList.remove('hidden')
 }
 
 
@@ -101,7 +102,7 @@ navigator.mediaDevices.enumerateDevices().then(devices =>
     } else if ('videoinput' === device.kind) {
       el = videoSelect
     }
-    if(!el) return
+    if (!el) return
 
     let option = document.createElement('option')
     option.value = device.deviceId
