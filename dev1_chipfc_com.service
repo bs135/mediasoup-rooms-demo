@@ -1,0 +1,14 @@
+[Unit]
+Description=NodeJS Server
+After=syslog.target
+After=network.target
+#After=mysqld.service
+
+[Service]
+Type=simple
+User=root
+ExecStart=/usr/bin/node /var/www/vhosts/chipfc.com/dev1.chipfc.com/mediasoup-rooms-demo/src/app.js
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
